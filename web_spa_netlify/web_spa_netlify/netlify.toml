@@ -1,0 +1,17 @@
+
+# Configuração de build para Netlify
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# SPA redirects: garante que rotas do React funcionem em produção
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Cache estático recomendado
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
